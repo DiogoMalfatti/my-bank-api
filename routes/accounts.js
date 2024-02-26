@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import { promises as fs, read } from "fs";
 
 const { readFile, writeFile } = fs;
@@ -41,6 +41,20 @@ router.get("/:id", async (require, response) => {
       (account) => account.id === parseInt(require.params.id)
     );
     response.send(account);
+  } catch (err) {
+    response.status(400).send({ error: err.message });
+  }
+});
+
+//metodo delete 'D' por id do crud
+router.delete("/:id", async (require, response) => {
+  try {
+    const data = JSON.parse(await readFile(global.fileName));
+    data.accounts = data.accounts.filter(
+      (account) => account.id !== parseInt(require.params.id)
+    );
+    await writeFile(global.fileName, JSON.stringify(data, null, 2));
+    response.end();
   } catch (err) {
     response.status(400).send({ error: err.message });
   }

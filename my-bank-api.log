@@ -1,0 +1,35 @@
+2024-02-26T22:24:49.387Z [my-bank-api] info: API started !
+2024-02-26T22:25:25.448Z [my-bank-api] info: API started !
+2024-02-26T22:27:44.208Z [my-bank-api] info: API started !
+2024-02-26T22:27:58.312Z [my-bank-api] info: API started !
+2024-02-26T22:28:13.512Z [my-bank-api] info: API started !
+2024-02-26T22:28:41.365Z [my-bank-api] info: API started !
+2024-02-26T22:29:21.527Z [my-bank-api] info: API started !
+2024-02-26T22:31:11.157Z [my-bank-api] error: ENOENT: no such file or directory, open 'accounts.json'
+2024-02-26T22:32:36.749Z [my-bank-api] info: API started and File created
+2024-02-26T22:33:30.866Z [my-bank-api] error: GET /account - ENOENT: no such file or directory, open 'accounts.json'
+2024-02-26T22:36:15.755Z [my-bank-api] info: API started and File created
+2024-02-26T22:37:39.013Z [my-bank-api] info: API started !
+2024-02-26T22:37:56.439Z [my-bank-api] info: API started !
+2024-02-26T22:40:15.889Z [my-bank-api] info: API started !
+2024-02-26T22:41:23.663Z [my-bank-api] info: API started !
+2024-02-26T22:42:33.109Z [my-bank-api] info: API started !
+2024-02-26T22:43:10.399Z [my-bank-api] info: API started !
+2024-02-26T22:44:00.886Z [my-bank-api] info: GET /account
+2024-02-26T22:44:13.638Z [my-bank-api] info: POST /account - {"id":1,"name":"Joao Silva","balance":3451.2}
+2024-02-26T22:44:44.915Z [my-bank-api] info: GET /account/:id
+2024-02-26T22:46:18.275Z [my-bank-api] info: POST /account - {"id":2,"name":"Diogo Malfatti","balance":200}
+2024-02-26T22:46:41.470Z [my-bank-api] info: POST /account - {"id":3,"name":"Bernardo Alves","balance":2400.5}
+2024-02-26T22:47:06.149Z [my-bank-api] info: POST /account - {"id":4,"name":"Jose Chaves","balance":1251.2}
+2024-02-26T22:47:45.101Z [my-bank-api] info: GET /account
+2024-02-26T22:47:57.896Z [my-bank-api] info: GET /account/:id
+2024-02-26T22:48:22.826Z [my-bank-api] info: DELETE /account/:id - 3
+2024-02-26T22:48:59.811Z [my-bank-api] info: PUT /account - {"id":4,"name":"Jose Chaves da Silva","balance":2351.2}
+2024-02-26T22:49:10.545Z [my-bank-api] info: GET /account
+2024-02-26T22:49:22.052Z [my-bank-api] info: PUT /account - {"id":3,"name":"Jose Chaves da Silva","balance":2351.2}
+2024-02-26T22:49:26.670Z [my-bank-api] info: GET /account
+2024-02-26T22:49:29.941Z [my-bank-api] info: GET /account
+2024-02-26T22:50:06.549Z [my-bank-api] info: PATCH /account/updateBalance - {"id":4,"balance":10000}
+2024-02-26T22:50:51.643Z [my-bank-api] info: GET /account
+2024-02-26T22:51:02.710Z [my-bank-api] info: GET /account/:id
+2024-02-26T22:51:07.976Z [my-bank-api] info: GET /account/:id

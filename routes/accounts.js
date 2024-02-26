@@ -17,6 +17,7 @@ router.post("/", async (require, response, next) => {
     await writeFile(global.fileName, JSON.stringify(data, null, 2));
 
     response.send(account);
+    global.logger.info(`POST /account - ${JSON.stringify(account)}`);
   } catch (err) {
     next(err);
   }
@@ -27,7 +28,9 @@ router.get("/", async (require, response, next) => {
   try {
     const data = JSON.parse(await readFile(global.fileName));
     delete data.nextId;
+
     response.send(data);
+    global.logger.info(`GET /account`);
   } catch (err) {
     next(err);
   }
@@ -40,7 +43,9 @@ router.get("/:id", async (require, response, next) => {
     const account = data.accounts.find(
       (account) => account.id === parseInt(require.params.id)
     );
+
     response.send(account);
+    global.logger.info(`GET /account/:id`);
   } catch (err) {
     next(err);
   }
@@ -54,7 +59,9 @@ router.delete("/:id", async (require, response, next) => {
       (account) => account.id !== parseInt(require.params.id)
     );
     await writeFile(global.fileName, JSON.stringify(data, null, 2));
+
     response.end();
+    global.logger.info(`DELETE /account/:id - ${require.params.id}`);
   } catch (err) {
     next(err);
   }
@@ -70,7 +77,9 @@ router.put("/", async (require, response, next) => {
     data.accounts[index] = account;
 
     await writeFile(global.fileName, JSON.stringify(data));
+
     response.send(account);
+    global.logger.info(`PUT /account - ${JSON.stringify(account)}`);
   } catch (err) {
     next(err);
   }
@@ -86,14 +95,18 @@ router.patch("/updateBalance", async (require, response, next) => {
     data.accounts[index].balance = account.balance;
 
     await writeFile(global.fileName, JSON.stringify(data));
+
     response.send(data.accounts[index]);
+    global.logger.info(
+      `PATCH /account/updateBalance - ${JSON.stringify(account)}`
+    );
   } catch (err) {
     next(err);
   }
 });
 
 router.use((err, require, response, next) => {
-  console.log(err);
+  global.logger.error(`${require.method} ${require.baseUrl} - ${err.message}`);
   response.status(400).send({ error: err.message });
 });
 

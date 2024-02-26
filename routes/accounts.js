@@ -9,9 +9,17 @@ const router = express.Router();
 router.post("/", async (require, response, next) => {
   try {
     let account = require.body;
+
+    if (!account.name || account.balance == null) {
+      throw new Error("Name e Balance sao obrigatorios.");
+    }
     const data = JSON.parse(await readFile(global.fileName));
 
-    account = { id: data.nextId++, ...account };
+    account = {
+      id: data.nextId++,
+      name: account.name,
+      balance: account.balance,
+    };
     data.accounts.push(account);
 
     await writeFile(global.fileName, JSON.stringify(data, null, 2));
@@ -71,12 +79,19 @@ router.delete("/:id", async (require, response, next) => {
 router.put("/", async (require, response, next) => {
   try {
     const account = require.body;
+    if (!account.id || !account.name || account.balance == null) {
+      throw new Error("ID, Name e Balance sao obrigatorios.");
+    }
     const data = JSON.parse(await readFile(global.fileName));
 
     const index = data.accounts.findIndex((a) => a.id === account.id);
-    data.accounts[index] = account;
+    if (index === -1) {
+      throw new Error("Registro nao encontrado.");
+    }
+    data.accounts[index].name = account.name;
+    data.accounts[index].balance = account.balance;
 
-    await writeFile(global.fileName, JSON.stringify(data));
+    await writeFile(global.fileName, JSON.stringify(data, null, 2));
 
     response.send(account);
     global.logger.info(`PUT /account - ${JSON.stringify(account)}`);
@@ -92,9 +107,15 @@ router.patch("/updateBalance", async (require, response, next) => {
     const data = JSON.parse(await readFile(global.fileName));
 
     const index = data.accounts.findIndex((a) => a.id === account.id);
+    if (!account.id || account.balance == null) {
+      throw new Error("Id e Balance sao obrigatorios.");
+    }
+    if (index === -1) {
+      throw new Error("Registro nao encontrado.");
+    }
     data.accounts[index].balance = account.balance;
 
-    await writeFile(global.fileName, JSON.stringify(data));
+    await writeFile(global.fileName, JSON.stringify(data, null, 2));
 
     response.send(data.accounts[index]);
     global.logger.info(

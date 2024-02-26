@@ -33,3 +33,18 @@
 2024-02-26T22:50:51.643Z [my-bank-api] info: GET /account
 2024-02-26T22:51:02.710Z [my-bank-api] info: GET /account/:id
 2024-02-26T22:51:07.976Z [my-bank-api] info: GET /account/:id
+2024-02-26T23:12:24.215Z [my-bank-api] info: API started !
+2024-02-26T23:12:55.496Z [my-bank-api] info: API started !
+2024-02-26T23:13:14.427Z [my-bank-api] error: POST /account - Name e Balance sao obrigatorios.
+2024-02-26T23:13:32.630Z [my-bank-api] error: POST /account - Name e Balance sao obrigatorios.
+2024-02-26T23:14:22.936Z [my-bank-api] info: API started !
+2024-02-26T23:16:30.449Z [my-bank-api] info: API started !
+2024-02-26T23:18:47.886Z [my-bank-api] info: API started !
+2024-02-26T23:19:07.538Z [my-bank-api] info: POST /account - {"id":5,"name":"Jose Chaves","balance":1251.2}
+2024-02-26T23:21:02.861Z [my-bank-api] info: API started !
+2024-02-26T23:22:32.122Z [my-bank-api] info: API started !
+2024-02-26T23:23:35.594Z [my-bank-api] info: API started !
+2024-02-26T23:25:06.619Z [my-bank-api] info: API started !
+2024-02-26T23:25:55.710Z [my-bank-api] info: API started !
+2024-02-26T23:27:10.486Z [my-bank-api] info: API started !
+2024-02-26T23:29:24.510Z [my-bank-api] info: API started !

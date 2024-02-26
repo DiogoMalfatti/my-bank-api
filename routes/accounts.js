@@ -5,7 +5,7 @@ const { readFile, writeFile } = fs;
 
 const router = express.Router();
 
-// metodo Create 'C' do crud
+// metodo Create 'C' do crud = post
 router.post("/", async (require, response) => {
   try {
     let account = require.body;
@@ -22,7 +22,7 @@ router.post("/", async (require, response) => {
   }
 });
 
-// metodo Read 'R' do crud
+// metodo Read 'R' do crud = get
 router.get("/", async (require, response) => {
   try {
     const data = JSON.parse(await readFile(global.fileName));
@@ -33,7 +33,7 @@ router.get("/", async (require, response) => {
   }
 });
 
-// metodo Read 'R' por id do crud
+// metodo Read 'R' por id do crud = get
 router.get("/:id", async (require, response) => {
   try {
     const data = JSON.parse(await readFile(global.fileName));
@@ -46,7 +46,7 @@ router.get("/:id", async (require, response) => {
   }
 });
 
-//metodo delete 'D' por id do crud
+//metodo Delete 'D' por id do crud = delete
 router.delete("/:id", async (require, response) => {
   try {
     const data = JSON.parse(await readFile(global.fileName));
@@ -55,6 +55,38 @@ router.delete("/:id", async (require, response) => {
     );
     await writeFile(global.fileName, JSON.stringify(data, null, 2));
     response.end();
+  } catch (err) {
+    response.status(400).send({ error: err.message });
+  }
+});
+
+//metodo Update 'U' do crud = put atualizacao integral
+router.put("/", async (require, response) => {
+  try {
+    const account = require.body;
+    const data = JSON.parse(await readFile(global.fileName));
+
+    const index = data.accounts.findIndex((a) => a.id === account.id);
+    data.accounts[index] = account;
+
+    await writeFile(global.fileName, JSON.stringify(data));
+    response.send(account);
+  } catch (err) {
+    response.status(400).send({ error: err.message });
+  }
+});
+
+//metodo Update 'U' do crud = patch atualizacao parcial
+router.patch("/updateBalance", async (require, response) => {
+  try {
+    const account = require.body;
+    const data = JSON.parse(await readFile(global.fileName));
+
+    const index = data.accounts.findIndex((a) => a.id === account.id);
+    data.accounts[index].balance = account.balance;
+
+    await writeFile(global.fileName, JSON.stringify(data));
+    response.send(data.accounts[index]);
   } catch (err) {
     response.status(400).send({ error: err.message });
   }

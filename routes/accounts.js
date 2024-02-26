@@ -33,4 +33,17 @@ router.get("/", async (require, response) => {
   }
 });
 
+// metodo Read 'R' por id do crud
+router.get("/:id", async (require, response) => {
+  try {
+    const data = JSON.parse(await readFile(global.fileName));
+    const account = data.accounts.find(
+      (account) => account.id === parseInt(require.params.id)
+    );
+    response.send(account);
+  } catch (err) {
+    response.status(400).send({ error: err.message });
+  }
+});
+
 export default router;

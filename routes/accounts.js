@@ -6,7 +6,7 @@ const { readFile, writeFile } = fs;
 const router = express.Router();
 
 // metodo Create 'C' do crud = post
-router.post("/", async (require, response) => {
+router.post("/", async (require, response, next) => {
   try {
     let account = require.body;
     const data = JSON.parse(await readFile(global.fileName));
@@ -18,23 +18,23 @@ router.post("/", async (require, response) => {
 
     response.send(account);
   } catch (err) {
-    response.status(400).send({ error: err.message });
+    next(err);
   }
 });
 
 // metodo Read 'R' do crud = get
-router.get("/", async (require, response) => {
+router.get("/", async (require, response, next) => {
   try {
     const data = JSON.parse(await readFile(global.fileName));
     delete data.nextId;
     response.send(data);
   } catch (err) {
-    response.status(400).send({ error: err.message });
+    next(err);
   }
 });
 
 // metodo Read 'R' por id do crud = get
-router.get("/:id", async (require, response) => {
+router.get("/:id", async (require, response, next) => {
   try {
     const data = JSON.parse(await readFile(global.fileName));
     const account = data.accounts.find(
@@ -42,12 +42,12 @@ router.get("/:id", async (require, response) => {
     );
     response.send(account);
   } catch (err) {
-    response.status(400).send({ error: err.message });
+    next(err);
   }
 });
 
 //metodo Delete 'D' por id do crud = delete
-router.delete("/:id", async (require, response) => {
+router.delete("/:id", async (require, response, next) => {
   try {
     const data = JSON.parse(await readFile(global.fileName));
     data.accounts = data.accounts.filter(
@@ -56,12 +56,12 @@ router.delete("/:id", async (require, response) => {
     await writeFile(global.fileName, JSON.stringify(data, null, 2));
     response.end();
   } catch (err) {
-    response.status(400).send({ error: err.message });
+    next(err);
   }
 });
 
 //metodo Update 'U' do crud = put atualizacao integral
-router.put("/", async (require, response) => {
+router.put("/", async (require, response, next) => {
   try {
     const account = require.body;
     const data = JSON.parse(await readFile(global.fileName));
@@ -72,12 +72,12 @@ router.put("/", async (require, response) => {
     await writeFile(global.fileName, JSON.stringify(data));
     response.send(account);
   } catch (err) {
-    response.status(400).send({ error: err.message });
+    next(err);
   }
 });
 
 //metodo Update 'U' do crud = patch atualizacao parcial
-router.patch("/updateBalance", async (require, response) => {
+router.patch("/updateBalance", async (require, response, next) => {
   try {
     const account = require.body;
     const data = JSON.parse(await readFile(global.fileName));
@@ -88,8 +88,13 @@ router.patch("/updateBalance", async (require, response) => {
     await writeFile(global.fileName, JSON.stringify(data));
     response.send(data.accounts[index]);
   } catch (err) {
-    response.status(400).send({ error: err.message });
+    next(err);
   }
+});
+
+router.use((err, require, response, next) => {
+  console.log(err);
+  response.status(400).send({ error: err.message });
 });
 
 export default router;

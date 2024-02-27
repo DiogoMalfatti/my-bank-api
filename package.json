@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "API-Rest NodeJS: um sistema de banco simples",
   "main": "index.js",
+  "engines": {
+    "node": "18"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "Diogo Malfatti",

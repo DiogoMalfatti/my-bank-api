@@ -30,7 +30,7 @@ app.use(express.static("public"));
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/account", accountsRouter);
 
-app.listen(3000, async () => {
+app.listen(process.env.PORT ? Number(process.env.PORT) : 3000, async () => {
   try {
     await readFile(global.fileName);
     global.logger.info("API started !");

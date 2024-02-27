@@ -65,3 +65,24 @@
 2024-02-27T00:02:37.297Z [my-bank-api] info: GET /account
 2024-02-27T00:02:37.477Z [my-bank-api] info: GET /account
 2024-02-27T00:02:37.643Z [my-bank-api] info: GET /account
+2024-02-27T00:23:45.231Z [my-bank-api] info: API started !
+2024-02-27T00:23:45.948Z [my-bank-api] info: GET /account
+2024-02-27T00:23:46.436Z [my-bank-api] info: GET /account
+2024-02-27T00:25:09.532Z [my-bank-api] info: API started !
+2024-02-27T00:25:09.829Z [my-bank-api] info: GET /account
+2024-02-27T00:25:10.156Z [my-bank-api] info: GET /account
+2024-02-27T00:25:25.787Z [my-bank-api] info: API started !
+2024-02-27T00:25:26.062Z [my-bank-api] info: GET /account
+2024-02-27T00:25:26.480Z [my-bank-api] info: GET /account
+2024-02-27T00:25:26.922Z [my-bank-api] info: GET /account
+2024-02-27T00:25:27.340Z [my-bank-api] info: GET /account
+2024-02-27T00:25:27.761Z [my-bank-api] info: GET /account
+2024-02-27T00:25:28.112Z [my-bank-api] info: GET /account
+2024-02-27T00:25:28.484Z [my-bank-api] info: GET /account
+2024-02-27T00:25:28.904Z [my-bank-api] info: GET /account
+2024-02-27T00:25:29.262Z [my-bank-api] info: GET /account
+2024-02-27T00:25:29.601Z [my-bank-api] info: GET /account
+2024-02-27T00:31:14.853Z [my-bank-api] info: API started !
+2024-02-27T00:31:15.016Z [my-bank-api] info: GET /account
+2024-02-27T00:31:15.477Z [my-bank-api] info: GET /account
+2024-02-27T00:34:43.023Z [my-bank-api] info: API started !
